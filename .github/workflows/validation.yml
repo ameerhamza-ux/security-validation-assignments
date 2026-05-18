@@ -1,0 +1,27 @@
+name: Validation Pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+
+ validate:
+
+   runs-on: ubuntu-latest
+
+   steps:
+
+   - uses: actions/checkout@v3
+
+   - name: Install Dependencies
+     run: pip install pytest
+
+   - name: Run Tests
+     run: pytest > validation_log.txt
+
+   - name: Upload Artifact
+     uses: actions/upload-artifact@v3
+     with:
+       name: validation-evidence
+       path: validation_log.txt
