@@ -12,7 +12,7 @@ jobs:
 
    steps:
 
-   - uses: actions/checkout@v3
+   - uses: actions/checkout@v4
 
    - name: Install Dependencies
      run: pip install pytest
@@ -21,7 +21,7 @@ jobs:
      run: pytest > validation_log.txt
 
    - name: Upload Artifact
-     uses: actions/upload-artifact@v3
+     uses: actions/upload-artifact@v4
      with:
        name: validation-evidence
        path: validation_log.txt
